@@ -18,7 +18,6 @@ const List: React.FC = () => {
         fields: [Contacts.Fields.Image, Contacts.Fields.PhoneNumbers],
       });
       if (data.length > 0) {
-        console.log(data);
         setContacts(data);
       }
     }
