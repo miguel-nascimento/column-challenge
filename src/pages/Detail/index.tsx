@@ -26,12 +26,9 @@ import { useState } from "react";
 import { Contact } from "expo-contacts";
 import { DefaultTheme } from "styled-components/native";
 import { useClipboard } from "@react-native-community/hooks";
-import { useNavigation } from "@react-navigation/native";
+import { RouteProp, useNavigation } from "@react-navigation/native";
 import { GenericTouchableProps } from "react-native-gesture-handler/lib/typescript/components/touchables/GenericTouchable";
-
-interface DetailProps {
-  id: string;
-}
+import { RouteProps } from "../../routes";
 
 const BackIcon: React.FC<GenericTouchableProps> = ({ onPress }) => {
   return (
@@ -45,7 +42,13 @@ const ClipboardIcon: React.FC<{ theme: DefaultTheme }> = ({ theme }) => (
   <Feather name="clipboard" size={18} color={theme.color.primary} />
 );
 
-const Detail: React.FC<DetailProps> = ({ route }: any) => {
+type DetailScreenRouteProps = RouteProp<RouteProps, "Detail">;
+
+type DetailProps = {
+  route: DetailScreenRouteProps;
+};
+
+const Detail: React.FC<DetailProps> = ({ route }) => {
   const navigation = useNavigation();
   const theme = useTheme();
   const { id } = route.params;

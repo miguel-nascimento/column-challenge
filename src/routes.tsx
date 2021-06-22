@@ -6,7 +6,12 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Detail from "./pages/Detail";
 import List from "./pages/List";
 
-const Stack = createStackNavigator();
+export type RouteProps = {
+  List: undefined;
+  Detail: { id: string };
+};
+
+const Stack = createStackNavigator<RouteProps>();
 
 const Routes = () => {
   return (

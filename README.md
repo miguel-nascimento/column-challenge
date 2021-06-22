@@ -20,4 +20,9 @@ Now, use yarn start to run Expo.
 $ yarn start
 ```
 
+Extras:
+
+- Contact photo in detail page
+- Copy contact number to clipboard
+
 Great! Now you only need to scam the QR Code. 😉

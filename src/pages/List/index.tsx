@@ -20,6 +20,8 @@ const List: React.FC = () => {
       if (data.length > 0) {
         setContacts(data);
       }
+    } else {
+      alert("The app doesn't have permission to access the contacts list");
     }
   };
 
