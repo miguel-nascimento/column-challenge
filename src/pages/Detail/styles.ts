@@ -15,7 +15,6 @@ export const Container = styled.View`
 export const InfoContainer = styled.View`
   width: 100%;
   height: 100%;
-  border-radius: 20px;
   background-color: ${({theme}) => theme.color.background};
 `
 
@@ -68,7 +67,7 @@ export const Header = styled.View`
   align-items: center;
 `
 
-export const BackIconContainer = styled.View`
+export const BackIconContainer = styled.TouchableOpacity`
   padding-left: 20px;
 `
 

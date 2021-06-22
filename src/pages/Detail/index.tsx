@@ -1,14 +1,6 @@
 import React, { useEffect } from "react";
 import { useTheme } from "styled-components";
-import {
-  Text,
-  StatusBar,
-  StyleSheet,
-  ViewPropTypes,
-  View,
-  TouchableWithoutFeedback,
-  TouchableNativeFeedback,
-} from "react-native";
+import { StatusBar } from "react-native";
 import * as Contacts from "expo-contacts";
 import { Feather } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
@@ -35,26 +27,15 @@ import { Contact } from "expo-contacts";
 import { DefaultTheme } from "styled-components/native";
 import { useClipboard } from "@react-native-community/hooks";
 import { useNavigation } from "@react-navigation/native";
+import { GenericTouchableProps } from "react-native-gesture-handler/lib/typescript/components/touchables/GenericTouchable";
 
-const styles = StyleSheet.create({
-  shadow: {
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-    elevation: 3,
-  },
-});
 interface DetailProps {
   id: string;
 }
 
-const BackIcon = () => {
+const BackIcon: React.FC<GenericTouchableProps> = ({ onPress }) => {
   return (
-    <BackIconContainer>
+    <BackIconContainer onPress={onPress}>
       <Ionicons name="arrow-back" size={24} color="black" />
     </BackIconContainer>
   );
@@ -99,11 +80,9 @@ const Detail: React.FC<DetailProps> = ({ route }: any) => {
       <StatusBar backgroundColor={theme.color.primary} />
       <Container>
         {contact && (
-          <InfoContainer style={styles.shadow}>
+          <InfoContainer>
             <Header>
-              <TouchableWithoutFeedback onPress={() => goToList()}>
-                <BackIcon />
-              </TouchableWithoutFeedback>
+              <BackIcon onPress={() => goToList()} />
               <AvatarSection>
                 <Avatar
                   source={{
@@ -118,7 +97,7 @@ const Detail: React.FC<DetailProps> = ({ route }: any) => {
             <Body>
               <Name>{contact.name}</Name>
               {contact!.phoneNumbers!.map((phone) => (
-                <Numbers>
+                <Numbers key={phone.number}>
                   <Type>{phone.label}</Type>
                   <CopyToClipboardContainer
                     onPress={() => copyToClipboard(phone.number)}

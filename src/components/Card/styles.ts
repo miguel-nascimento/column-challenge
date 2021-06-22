@@ -5,13 +5,18 @@ export const Container = styled.View`
   margin: 15px 10px;
   border-radius: 5px;
   padding: 15px;
+  flex-direction: row;
 `
 
 export const ImageContainer = styled.View`
-
+  margin-right: 10px;
 `
 
-export const ProfilePicture = styled.Image``
+export const ProfilePicture = styled.Image`
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+`
 
 export const Name = styled.Text`
   font-size: 18px;
@@ -46,3 +51,7 @@ export const Divider = styled.View`
   border-radius: 1px;
   background-color: ${({ theme }) => theme.color.text.lightGray};
 `;
+
+export const Column = styled.View`
+  flex-direction: column;
+`
