@@ -23,6 +23,10 @@ const List: React.FC = () => {
     }
   };
 
+  const goToDetail = (id: string) => {
+    navigation.navigate("Detail", { id });
+  };
+
   return (
     <Container>
       <FlatList<Contact>
@@ -37,7 +41,7 @@ const List: React.FC = () => {
           <>
             {item.phoneNumbers && (
               <Card
-                onPress={() => navigation.navigate("Detail", { id: item.id })}
+                onPress={() => goToDetail(item.id)}
                 image={{
                   imageAvaliable: item.imageAvailable,
                   imageObj: item.image,

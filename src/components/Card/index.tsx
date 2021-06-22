@@ -29,7 +29,6 @@ const Card: React.FC<ContactInfoProps> = ({
   image,
   onPress,
 }) => {
-  console.log(image.imageObj, name);
   return (
     <TouchableWithoutFeedback onPress={onPress}>
       <Container
@@ -47,8 +46,11 @@ const Card: React.FC<ContactInfoProps> = ({
       >
         <ImageContainer>
           <ProfilePicture
-            source={{ uri: image.imageObj?.uri }}
-            width={image.imageObj?.width}
+            source={{
+              uri: image.imageObj?.uri
+                ? "https://i1.wp.com/terracoeconomico.com.br/wp-content/uploads/2019/01/default-user-image.png?ssl=1"
+                : image.imageObj?.uri,
+            }}
           />
         </ImageContainer>
         <Name>{name}</Name>
