@@ -11,6 +11,12 @@ export type RouteProps = {
   Detail: { id: string };
 };
 
+const screenOptions = {
+  noHeader: {
+    headerShown: false,
+  }
+}
+
 const Stack = createStackNavigator<RouteProps>();
 
 const Routes = () => {
@@ -21,9 +27,7 @@ const Routes = () => {
         <Stack.Screen
           name="Detail"
           component={Detail}
-          options={{
-            headerShown: false,
-          }}
+          options={screenOptions.noHeader}
         />
       </Stack.Navigator>
     </NavigationContainer>
